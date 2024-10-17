@@ -11,11 +11,23 @@ export class HomeComponent implements OnInit {
   constructor(private Prods: ServiceProdService) {}
 
   allProduct: iProduct[] = [];
+  cart: iProduct[] = [];
 
   ngOnInit(): void {
-    this.Prods.getProd().subscribe((res) => {
-      this.allProduct = res.products;
-      console.log(this.allProduct);
+    this.Prods.getProd().subscribe((products) => {
+      this.allProduct = products;
     });
+    // cart
+    this.Prods.cart$.subscribe((prod) => {
+      this.cart.push(prod);
+    });
+  }
+
+  addToCart(prod: iProduct) {
+    this.Prods.addToCart(prod);
+  }
+
+  addToFav(prod: iProduct) {
+    this.Prods.addToFav(prod);
   }
 }

@@ -1,3 +1,4 @@
+<!-- home -->
 <h1>home works!</h1>
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <div class="col" *ngFor="let prod of allProduct">
@@ -8,12 +9,24 @@
         height="300"
       />
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">{{ prod.title }}</h5>
         <p class="card-text">
-          This is a longer card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
+          {{ prod.description }}
         </p>
-        <button type="button" class="btn btn-primary">Primary</button>
+        <button
+          (click)="addToCart(prod)"
+          type="button"
+          class="btn btn-primary me-2"
+        >
+          Aggiungi al carrello
+        </button>
+        <button
+          (click)="addToFav(prod)"
+          type="button"
+          class="btn btn-secondary"
+        >
+          preferiti
+        </button>
       </div>
     </div>
   </div>
